@@ -14,14 +14,14 @@ After registration, wait five minutes to get an email for account confirmation, 
 Once your account is confirmed, you can log in and access the [Software Download section](https://www.arista.com/en/support/software-download).
 
 <p align="center">
-  <img height="200" title="Software Download section" src="../images/Arista_Download.png"><br>
+  <img height="200" title="Software Download section" src="../pictures/Arista_Download.png"><br>
   <b>Arista Software Download section</b><br>
 </p>
 
 From there, you can download cEOS.
 
 <p align="center">
-  <img height="300" title="Download cEOS" src="../images/Download_cEOS.png"><br>
+  <img height="300" title="Download cEOS" src="../pictures/Download_cEOS.png"><br>
   <b>Download cEOS</b><br>
 </p>
 

@@ -5,7 +5,7 @@ Cloud resources are expensive, you only want to pay for them while your are usin
 If you want to resume work or start fresh, your setup should ideally be re-created consistently and then destroyed with a single click of a button. That's where automation comes in.
 
 <p align="center">
-  <img height="300" title="Software Download section" src="images/graph.png"><br>
+  <img height="300" title="Software Download section" src="pictures/graph.png"><br>
 </p>
 
 In this repo, I will provide an example in AWS to create a virtual machine that can run containerized multi-vendor network topologies automatically. You can modify it to fit your needs.
@@ -108,7 +108,7 @@ sudo clab deploy --topo topology.yml
 ```
 
 <p align="center">
-  <img height="200" title="Network Topology" src="images/topology.png"><br>
+  <img height="200" title="Network Topology" src="pictures/topology.png"><br>
 </p>
 
 The routers are [pre-configured](lab/frr/router1/frr.cfg) with BGP running between them. To access router1 for example:
