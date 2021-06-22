@@ -5,8 +5,7 @@ Cloud resources are expensive, you only want to pay for them while your are usin
 If you want to resume work or start fresh, your setup should ideally be re-created consistently and then destroyed with a single click of a button. That's where automation comes in.
 
 <p align="center">
-  <img title="Software Download section" src="images/graph.png"><br>
-  <b>Automation ROI</b><br>
+  <img height="300" title="Software Download section" src="images/graph.png"><br>
 </p>
 
 In this repo, I will provide an example in AWS to create a virtual machine that can run containerized multi-vendor network topologies automatically. You can modify it to fit your needs.
@@ -84,7 +83,7 @@ ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.larg
 The volume type is also configurable, check out [Amazon EBS pricing](https://aws.amazon.com/ebs/pricing/). The default is `gp2`.
 
 Volume Type | Price
---- | --- | --- | ---
+--- | ---
 General Purpose SSD (gp3) - Storage	| $0.08/GB-month
 General Purpose SSD (gp2) Volumes | $0.10 per GB-month of provisioned storage
 
@@ -92,7 +91,24 @@ To select a different type, use the variable `volume_type`.
 
 ```bash
 ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.large volume_type=gp3"
+```
 
+## Running a network topology
+
+Once in the VM, you can run any of the examples in the [lab folder](lab). [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two FRR routers connected back-to-back is in [lab/frr/](lab/frr/topology.yml), so you change directory (`cd lab/frr/`) and from there you can execute:
+
+```bash
+sudo clab deploy --topo topology.yml
+```
+
+<p align="center">
+  <img height="200" title="Software Download section" src="images/topology.png"><br>
+</p>
+
+The routers are [pre-configured](lab/frr/router1/frr.cfg) with BGP running between them. To access router1 for example:
+
+```bash
+docker exec -it clab-mylab-router1 vtysh
 ```
 
 ## Deleting the test VM
