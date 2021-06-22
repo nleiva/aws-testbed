@@ -1,0 +1,17 @@
+- name: Configure instance based based on its Linux distribution
+  include_tasks: "{{ ansible_os_family }}.yml"
+
+- name: Install Go
+  include_tasks: install_go.yml
+
+- name: Install Docker
+  include_tasks: install_docker.yml
+
+- name: Copy Labs folder
+  include_tasks: copy_labs.yml
+
+- name: Install Containerlab
+  include_tasks: install_clab.yml
+
+- name: Reverse Systemd configuration to use cgroup v1
+  include_tasks: cgroup.yml

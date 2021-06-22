@@ -1,0 +1,75 @@
+---
+# export AWS_ACCESS_KEY=''
+# export AWS_SECRET_KEY=''
+# ansible-galaxy collection install -r collections/requirements.yml
+# ansible-playbook create-EC2-Fedora-34.yml -v
+
+# Play 1: Create an instance on AWS
+- name: Create EC2 instance
+  hosts: localhost
+  become: false
+  gather_facts: true
+  vars_files:
+    - ./vars/aws_common.yml
+    - ./vars/aws_fedora.yml
+
+  roles:
+      - {role: install_dependencies}
+
+  tasks:
+    - name: Create EC2 instance in AWS
+      ansible.builtin.include_role:
+        name: aws_create_ec2
+
+    - name: Grab facts for the instance we just created
+      community.aws.ec2_instance_info:
+        region: "{{ ec2_region }}"
+        filters:
+          instance-state-name: running
+          "tag:Name": "{{ ec2_name_tag }}"
+      register: ansible_node_facts
+
+    - name: Set facts for next play
+      ansible.builtin.set_fact:
+        instance_name: "{{ ec2_name_tag }}"
+
+    - name: Add instance(s) to my_instances group
+      ansible.builtin.add_host:
+        name: "{{ item.tags.Name }}"
+        ansible_host: "{{ item.public_ip_address }}"
+        ansible_user: "{{ ec2_username }}"
+        private_ip: "{{ item.private_ip_address }}"
+        instance_name: "{{ ec2_name_tag }}"
+        ansible_ssh_private_key_file: "{{ playbook_dir }}/{{ ec2_resource_prefix }}-private.pem"
+        instance_ssh: "{{ ssh_info }}"
+        groups:
+          - my_instances
+      with_items: "{{ ansible_node_facts.instances }}"
+
+
+# Play 2: Configure instance
+- name: Configure Instance(s)
+  hosts: "my_instances"
+  become: true
+  gather_facts: true
+  vars_files:
+    - ./vars/go_inputs.yml
+    - ./vars/clab_inputs.yml
+
+  tasks:
+    - name: Display variables/facts known for instance
+      debug:
+        msg: "Running {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_os_family }}), IP address: {{ ansible_host }}"
+
+    - name: Install packages and config files
+      include_role:
+        name: configure_instance
+
+    - name: Print out SSH access details
+      ansible.builtin.debug:
+        msg: "{{ hostvars[inventory_hostname]['instance_ssh'] }}"
+      when: hostvars[inventory_hostname]['instance_ssh'] is defined
+
+    # - name: Print out SSH access details (you need the SSH Private-Key)
+    #   debug:
+    #     msg: "TO CONNECT: ssh {{ ansible_user }}@{{ ansible_host }}"

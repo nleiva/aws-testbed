@@ -1,0 +1,15 @@
+base_software:
+- git
+- wget
+- tree
+- python3-pip
+- python3-devel
+- ansible
+- gcc
+- bind-utils
+- tar
+
+python_libraries:
+- ipaddress
+
+software_additional: []

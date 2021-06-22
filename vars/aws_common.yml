@@ -1,0 +1,8 @@
+ec2_region: us-east-1
+ec2_instance_type: "{{ instance_type | default('t3.medium', true) }}"
+ec2_volume:
+  - device_name: /dev/sda1
+    ebs:
+      volume_type: "{{ volume_type | default('gp2', true) }}"
+      volume_size: 20
+      delete_on_termination: true

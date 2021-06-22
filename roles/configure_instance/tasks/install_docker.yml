@@ -1,0 +1,43 @@
+- name: Install Docker on Fedora{{ ansible_distribution_major_version }}
+  block:
+    - name: Add Docker GPG key
+      ansible.builtin.rpm_key:
+        key: https://download.docker.com/linux/fedora/gpg
+        state: present
+
+    - name: Add Docker repository
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/fedora/docker-ce.repo
+        dest: '/etc/yum.repos.d/docker-ce.repo'
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: Install Docker
+      ansible.builtin.package:
+        name:
+        - docker-ce
+        - docker-ce-cli
+        - containerd.io
+        state: present
+  ignore_errors: yes
+
+- name: Fix user privileges
+  block:
+    - name: Ensure group "docker" exists
+      ansible.builtin.group:
+        name: docker
+        state: present
+
+    - name: Append user {{ ansible_user }} to the group 'docker'
+      ansible.builtin.user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    - name: Ensure Docker is started and enabled at boot
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+  ignore_errors: yes

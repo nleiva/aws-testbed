@@ -1,0 +1,4 @@
+---
+# Install a role from GitHub
+- src: https://github.com/fubarhouse/ansible-role-golang
+  name: go

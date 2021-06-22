@@ -1,0 +1,12 @@
+- name: Create SS Key Pair for instance
+  amazon.aws.ec2_key:
+    name: "{{ ec2_resource_prefix }}-key"
+    region: "{{ ec2_region }}"
+  register: create_key
+
+- name: Save Private Key
+  ansible.builtin.copy:
+    content: "{{ create_key.key.private_key }}"
+    dest: "{{ playbook_dir }}/{{ ec2_resource_prefix }}-private.pem"
+    mode: '0400'
+  when: create_key.changed

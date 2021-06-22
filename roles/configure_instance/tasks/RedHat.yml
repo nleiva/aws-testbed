@@ -1,0 +1,26 @@
+- name: Setup hostname
+  hostname:
+    name: "{{ hostvars[inventory_hostname]['instance_name'] }}"
+  when: hostvars[inventory_hostname]['instance_name'] is defined
+
+- name: Install base packages
+  package:
+    name: "{{ base_software }}"
+    state: present
+  register: package_check
+  until: package_check is not failed
+  retries: 4
+  delay: 5
+
+- name: Install Python dependencies
+  pip:
+    name: "{{ python_libraries }}"
+    executable: pip3
+
+- name: Setup custom prompt
+  ansible.builtin.copy:
+    src: prompt.sh
+    dest: /etc/profile.d/prompt.sh
+    owner: root
+    group: root
+    mode: '0644'

@@ -1,0 +1,10 @@
+- name: Create Internet Gateway
+  community.aws.ec2_vpc_igw:
+    region: "{{ ec2_region }}"
+    vpc_id: "{{ create_vpc.vpc.id }}"
+    tags:
+      Environment: "{{ ec2_environment }}"
+      DeleteBy: "{{ ec2_delete_by_tag }}"
+  register: igw
+  until: igw is not failed
+  retries: 5
