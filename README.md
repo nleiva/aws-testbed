@@ -36,7 +36,7 @@ ansible-galaxy collection install -r collections/requirements.yml
 
 ## Creating the test VM
 
-Let's create a VM to run the examples. You first need to make your AWS credentials (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available and have the dependencies installed the dependencies.
+Let's create a VM to run the examples. You first need to make your [AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available and have the dependencies installed the dependencies.
 
 ```bash
 export AWS_ACCESS_KEY=''
@@ -95,7 +95,7 @@ ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.larg
 
 ## Running a network topology
 
-Once in the VM, you can run any of the examples in the [lab folder](lab). [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two FRR routers connected back-to-back is in [lab/frr/](lab/frr/topology.yml), so you change directory (`cd lab/frr/`) and from there you can execute:
+Once in the VM, you can run any of the examples in the [lab folder](lab). [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back is in [lab/frr/](lab/frr/topology.yml), so you change directory (`cd lab/frr/`) and from there you can execute:
 
 ```bash
 sudo clab deploy --topo topology.yml

@@ -24,6 +24,9 @@ Preparing to install containerlab 0.14.4 from package
 ## Running a Topology
 
 ### Container images
+
+You need the following container images:
+
 - [FRR](https://hub.docker.com/r/frrouting/frr)
 - [cEOS](get_arista_ceos.md)
 
