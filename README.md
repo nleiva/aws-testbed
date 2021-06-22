@@ -36,14 +36,18 @@ ansible-galaxy collection install -r collections/requirements.yml
 
 ## Creating the test VM
 
-Let's create a VM to run the examples. You first need to make your [AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available and have the dependencies installed the dependencies.
+Let's create a VM to run the examples. 
+
+1. Clone this repository: `git clone https://github.com/nleiva/aws-testbed.git`
+
+2. Make your [AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available.
 
 ```bash
-export AWS_ACCESS_KEY=''
-export AWS_SECRET_KEY=''
+export AWS_ACCESS_KEY='...'
+export AWS_SECRET_KEY='...'
 ```
 
-With that we can run the following Playbook and wait.
+3. Run the following Playbook and wait:
 
 ```bash
 ansible-playbook create-EC2-Fedora-34.yml -v
@@ -65,14 +69,14 @@ You can access the VM as displayed in the logs, for example: `ssh -i Fedora34-pr
 
 ### Instance type
 
-You can select any instance type you prefer, based on the vCPU/Memory requirements, and price constrains. By default it selects `t3.medium`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/). Some examples:
+You can select any instance type you prefer, based on your vCPU/Memory requirements, and price constrains. By default it goes with `t3.medium`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/). Some examples:
 
 Instance name | On-Demand hourly rate | vCPU | Memory
 --- | --- | --- | ---
 t3.medium | $0.0416 | 2 | 4 GiB
 m5.large | $0.096 | 2 | 8 GiB
 
-You would run the Playbook like this instead if you preferred to run a `m5.large` instance. 
+You would run the Playbook like this instead, if you preferred to run a `m5.large` instance. 
 
 ```bash
 ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.large"
