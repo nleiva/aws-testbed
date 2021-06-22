@@ -47,11 +47,13 @@ export AWS_ACCESS_KEY='...'
 export AWS_SECRET_KEY='...'
 ```
 
-3. Run the following Playbook and wait:
+3. Run the [Playbook](create-EC2-Fedora-34.yml) and wait:
 
 ```bash
 ansible-playbook create-EC2-Fedora-34.yml -v
+
 <snip>
+
 TASK [Print out SSH access details] *********************************************************************************************************************************************
 ok: [Fedora34] => {
     "msg": "ssh -i Fedora34-private.pem fedora@ec2-3-236-234-XXX.compute-1.amazonaws.com"
