@@ -102,7 +102,7 @@ sudo clab deploy --topo topology.yml
 ```
 
 <p align="center">
-  <img height="200" title="Software Download section" src="images/topology.png"><br>
+  <img height="200" title="Network Topology" src="images/topology.png"><br>
 </p>
 
 The routers are [pre-configured](lab/frr/router1/frr.cfg) with BGP running between them. To access router1 for example:

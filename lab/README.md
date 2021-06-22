@@ -1,6 +1,8 @@
-# Network Lab
+# Network Labs
 
 ## Installing Containerlab
+
+Comes pre-installed in the test VM.
 
 ```bash
 ⇨  bash -c "$(curl -sL https://get-clab.srlinux.dev)"
@@ -25,7 +27,7 @@ Preparing to install containerlab 0.14.4 from package
 
 ### Container images
 
-You need the following container images:
+You need the following container images to run this examples:
 
 - [FRR](https://hub.docker.com/r/frrouting/frr)
 - [cEOS](get_arista_ceos.md)
@@ -50,6 +52,10 @@ topology:
   links:
     - endpoints: ["router1:eth1", "router2:eth1"]
 ```
+
+<p align="center">
+  <img height="200" src="../images/topology.png"><br>
+</p>
 
 ### Launching the topology
 
