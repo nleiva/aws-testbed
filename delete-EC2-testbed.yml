@@ -8,12 +8,10 @@
     - ./vars/aws_common.yml
 
   roles:
+      - { role: check_vars }
       - { role: install_dependencies }
 
   tasks:
-    - name: Check that Linux distribution selected is supported
-      assert: { that: "ec2_distro in supported_distros" }
-
     - name: Include Linux distribution variables
       include_vars: "./vars/aws_{{ ec2_distro }}.yml"
 
