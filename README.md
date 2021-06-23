@@ -1,14 +1,19 @@
 # Automating a testing environment setup on AWS
 
-Cloud resources are expensive, you only want to pay for them while your are using them. If you only run tests or work on demos for a couple of hours per day, it makes a sense to shutdown all resources for the rest of the day to save on costs.
+Cloud resources are expensive, you only want to pay for them while your are using them. 
+If you only run tests or work on demos for a couple of hours per day, it makes a sense to shutdown all resources for the rest of the day to save on costs.
 
-If you want to resume work or start fresh, your setup should ideally be re-created consistently and then destroyed with a single click of a button. That's where automation comes in.
+If you want to resume work or start fresh, your setup should ideally be re-created consistently and then destroyed with a single click of a button. 
+That's where automation comes in.
 
 <p align="center">
   <img height="300" title="Software Download section" src="pictures/graph.png"><br>
 </p>
 
-In this repo, I will provide an example in AWS to create a virtual machine (VM) that can run containerized multi-vendor network topologies automatically. The diagram below should be a close representation of the end-goal. You can modify the [Playbook](create-EC2-Fedora-34.yml) we use to fit your needs.
+A [Playbook](create-EC2-Fedora-34.yml) example is included to automatically create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
+The diagram below is a representation of the end-goal of this of this repository.
+All the AWS resources needed are provisioned as part of the process.
+Software requirements install and adding test examples to the VM are also considered. 
 
 <p align="center">
 <img src="./pictures/aws.svg">
