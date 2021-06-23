@@ -56,16 +56,16 @@ export AWS_ACCESS_KEY='...'
 export AWS_SECRET_KEY='...'
 ```
 
-3. Run the [Playbook](create-EC2-Fedora-34.yml) and wait a couple of minutes while the VM is provisioned and the software is installed:
+3. Run the [Playbook](create-EC2-testbed.yml) and wait a couple of minutes while the VM is provisioned and the software is installed:
 
 ```bash
-ansible-playbook create-EC2-Fedora-34.yml -v
+ansible-playbook create-EC2-testbed.yml -v
 
 <snip>
 
 TASK [Print out SSH access details] *********************************************************************************************************************************************
 ok: [Fedora34] => {
-    "msg": "ssh -i Fedora34-private.pem fedora@ec2-3-236-234-XXX.compute-1.amazonaws.com"
+    "msg": "ssh -i testbed-private.pem fedora@ec2-3-236-234-XXX.compute-1.amazonaws.com"
 }
 
 RUNNING HANDLER [configure_instance : Reboot machine] ***************************************************************************************************************************
@@ -90,7 +90,7 @@ m5.large | $0.096 | 2 | 8 GiB
 You would run the Playbook like this instead, if you preferred to run a `m5.large` instance. 
 
 ```bash
-ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.large"
+ansible-playbook create-EC2-testbed.yml -v --extra-vars "instance_type=m5.large"
 ```
 
 ### Volume type
@@ -105,15 +105,16 @@ General Purpose SSD (gp2) Volumes | $0.10 per GB-month of provisioned storage
 To select a different type, use the variable `volume_type`.
 
 ```bash
-ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.large volume_type=gp3"
+ansible-playbook create-EC2-testbed.yml -v --extra-vars "instance_type=m5.large volume_type=gp3"
 ```
 
 ## Running a network topology
 
-Once in the VM, you can run any of the examples of the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr](lab/frr/topology.yml) can b e instantiated as follows:
+Once in the VM, you can run any of the examples of the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr](lab/frr/topology.yml) can be instantiated as follows:
 
 ```bash
-sudo clab deploy --topo lab/frr/topology.yml
+cd lab/frr
+sudo clab deploy --topo topology.yml
 ```
 
 <p align="center">
@@ -133,5 +134,5 @@ docker exec -it clab-mylab-router1 vtysh
 As important as creating the VM, is being able to delete it. You can do this by running:
 
 ```bash
-ansible-playbook delete-EC2-Fedora-34.yml -v
+ansible-playbook delete-EC2-testbed.yml -v
 ```

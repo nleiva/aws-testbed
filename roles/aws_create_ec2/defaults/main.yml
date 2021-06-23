@@ -1,4 +1,4 @@
 ec2_cidr_block: "172.16.0.0/16"
 ec2_subnet: "172.16.0.0/24"
 ec2_delete_by_tag: "{{ ansible_date_time.date | replace('-','.') }}"
-ec2_environment: Testing
+ec2_environment: "{{ ec2_resource_prefix }}"
