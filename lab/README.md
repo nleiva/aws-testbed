@@ -104,8 +104,8 @@ docker exec -it clab-mylab-router2 Cli
 Credentials from the [arista config template](https://github.com/srl-labs/containerlab/blob/master/templates/arista/ceos.cfg.tpl).
 
 ```bash
-⇨  ssh admin@172.20.20.2
-(admin@172.20.20.2) Password: admin
+⇨  ssh admin@clab-mylab-router2
+(admin@clab-mylab-router2) Password: admin
 router2>
 ```
 
