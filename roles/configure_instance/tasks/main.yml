@@ -1,5 +1,5 @@
-- name: Configure instance based based on its Linux distribution
-  include_tasks: "{{ ansible_os_family }}.yml"
+- name: Configure common Linux stuff
+  include_tasks: common.yml
 
 - name: Install Go
   include_tasks: install_go.yml
@@ -15,3 +15,5 @@
 
 - name: Reverse Systemd configuration to use cgroup v1
   include_tasks: cgroup.yml
+  when:
+  - ansible_distribution == "Fedora" and ansible_distribution_major_version >= '31'

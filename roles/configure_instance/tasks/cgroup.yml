@@ -1,5 +1,4 @@
 - name: Configure systemd.unified_cgroup_hierarchy=0 in kernelopts
   command: grubby --update-kernel=ALL --args="systemd.unified_cgroup_hierarchy=0"
-  when:
-   - ansible_distribution == "Fedora" and ansible_distribution_major_version >= '31'
   notify: Reboot machine
+  when: ansible_distribution == "Fedora"

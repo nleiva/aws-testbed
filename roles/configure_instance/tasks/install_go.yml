@@ -24,7 +24,8 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
 
+# .bash_profile does not exist in Ubuntu
 - name: Update PATH environment variable
   ansible.builtin.lineinfile:
-    path: "/home/{{ ansible_user }}/.bash_profile"
+    path: "/home/{{ ansible_user }}/.bashrc"
     line: export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin

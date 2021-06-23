@@ -1,5 +1,18 @@
 # Amazon EC2 AMI Locator
 # From: https://cloud-images.ubuntu.com/locator/ec2/
-ec2_ami_id: ami-0b29b6e62f2343b46
+# Ubuntu Cloud Image Finder: https://cloud-images.ubuntu.com/locator/
+# AMI are AWS region dependent
+# Release 20210621
+ubuntu_ami:
+  us_east_1: ami-0dd76f917833aac4b
+  us_east_2: ami-0b29b6e62f2343b46
+  us_west_1: ami-04b61997e51f6d5c7
+  eu_north_1: ami-00a8ab5e0a29e8173
+  eu_central_1: ami-0bdbe51a2e8070ff2
+  eu_south_1: ami-03f04e4a71e1b3c2b
+  ca_central_1: ami-043d0311364b93890
+  ap_northeast_1: ami-0827d8ed0295e3feb
+
+ec2_ami_id: "{{ ubuntu_ami[ec2_region | replace('-','_')] }}"
 ec2_name_tag: "{{ ec2_resource_prefix }}-ubuntu20.04"
-ec2_username: ec2-user
+ec2_username: ubuntu

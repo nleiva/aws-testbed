@@ -59,7 +59,7 @@ export AWS_SECRET_KEY='...'
 3. Run the [Playbook](create-EC2-testbed.yml) and wait a couple of minutes while the VM is provisioned and the software is installed:
 
 ```bash
-ansible-playbook create-EC2-testbed.yml -v
+ ⇨  ansible-playbook create-EC2-testbed.yml -v
 
 <snip>
 
@@ -145,4 +145,10 @@ As important as creating the VM, is being able to delete it. You can do this by 
 
 ```bash
 ansible-playbook delete-EC2-testbed.yml -v
+```
+
+For a specific Linux distribution:
+
+```bash
+ansible-playbook delete-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
 ```
