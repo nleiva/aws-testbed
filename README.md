@@ -43,9 +43,9 @@ We will also need the Ansible [Amazon AWS Collection](https://github.com/ansible
 ansible-galaxy collection install -r collections/requirements.yml
 ```
 
-## Creating the test VM
+## Creating the testbed
 
-Follow this steps to provision the test VM.
+Follow these steps to provision the testbed.
 
 1. Clone this repository: `git clone https://github.com/nleiva/aws-testbed.git`
 
@@ -56,7 +56,7 @@ export AWS_ACCESS_KEY='...'
 export AWS_SECRET_KEY='...'
 ```
 
-3. Run the [Playbook](create-EC2-testbed.yml) and wait a couple of minutes while the VM is provisioned and the software is installed:
+3. Run the [Playbook](create-EC2-testbed.yml) and wait a couple of minutes while a VM is provisioned and the software is installed:
 
 ```bash
  ⇨  ansible-playbook create-EC2-testbed.yml -v
@@ -80,9 +80,9 @@ You can now access the VM as displayed in the logs, for example: `ssh -i testbed
 
 ### Linux distribution
 
-You can select either Fedora (34) or Ubuntu (20.04), by passing with variable `aws_distro`. By default it selects `fedora`
+You can select either Fedora (34) or Ubuntu (20.04) by passing the variable `aws_distro` to the [Playbook](create-EC2-testbed.yml). By default it selects `fedora`.
 
-You would run the Playbook like this instead, if you preferred to run a `ubuntu` machine. 
+You would run the [Playbook](create-EC2-testbed.yml) as follows, if you preferred to run an `ubuntu` machine. 
 
 ```bash
 ansible-playbook create-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
@@ -97,7 +97,7 @@ Instance name | On-Demand hourly rate | vCPU | Memory
 t3.medium | $0.0416 | 2 | 4 GiB
 m5.large | $0.096 | 2 | 8 GiB
 
-You would run the Playbook like this instead, if you preferred to run a `m5.large` instance. 
+You would run the [Playbook](create-EC2-testbed.yml) as follows, if you preferred to run a `m5.large` instance. 
 
 ```bash
 ansible-playbook create-EC2-testbed.yml -v --extra-vars "instance_type=m5.large"
@@ -120,7 +120,7 @@ ansible-playbook create-EC2-testbed.yml -v --extra-vars "instance_type=m5.large 
 
 ## Running a network topology
 
-Once in the VM, you can run any of the examples of the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr](lab/frr/topology.yml) can be instantiated as follows:
+Once in the VM, you can run any of the examples of the [lab folder](lab) in the VM's `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr](lab/frr/topology.yml) can be instantiated as follows:
 
 ```bash
 cd lab/frr
@@ -137,7 +137,7 @@ The routers are [pre-configured](lab/frr/router1/frr.cfg) with a BGP session run
 docker exec -it clab-mylab-router1 vtysh
 ```
 
-[More details](lab/README.md)
+[More details](lab/README.md) about Topology creation.
 
 ## Deleting the test VM
 
