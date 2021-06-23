@@ -110,10 +110,10 @@ ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.larg
 
 ## Running a network topology
 
-Once in the VM, you can run any of the examples in the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr/](lab/frr/topology.yml) can be run by changing directory (`cd lab/frr/`) and executing from there:
+Once in the VM, you can run any of the examples of the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr](lab/frr/topology.yml) can b e instantiated as follows:
 
 ```bash
-sudo clab deploy --topo topology.yml
+sudo clab deploy --topo lab/frr/topology.yml
 ```
 
 <p align="center">
