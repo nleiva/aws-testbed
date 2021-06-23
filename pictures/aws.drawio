@@ -1,0 +1,69 @@
+<mxfile modified="2021-06-23T02:47:53.696Z" host="app.diagrams.net" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36" etag="fdQn03Nel2Yj2qpEPrD3" version="14.8.0" type="github">
+  <diagram id="Ht1M8jgEwFfnCIfOTk4-" name="Page-1">
+    <mxGraphModel dx="1953" dy="1119" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-10" value="Security Group" style="fontStyle=1;verticalAlign=top;align=center;spacingTop=-2;fillColor=none;rounded=0;whiteSpace=wrap;html=1;strokeColor=#FF0000;strokeWidth=2;dashed=1;container=1;collapsible=0;expand=0;recursiveResize=0;fontFamily=Tahoma;" parent="1" vertex="1">
+          <mxGeometry x="600" y="160" width="360" height="238" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-14" value="EC2 instance contents" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_ec2_instance_contents;strokeColor=#D86613;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#D86613;dashed=0;fontFamily=Tahoma;" parent="xAl2Xru6v9woUS7dk4dZ-10" vertex="1">
+          <mxGeometry x="40" y="40" width="280" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="UEzPUAAOIrF-is8g5C7q-128" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=open;startFill=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#808080;" parent="1" source="UEzPUAAOIrF-is8g5C7q-109" target="xAl2Xru6v9woUS7dk4dZ-3" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="670" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="UEzPUAAOIrF-is8g5C7q-109" value="User" style="outlineConnect=0;gradientColor=none;fontColor=#545B64;strokeColor=none;fillColor=#879196;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.illustration_desktop;pointerEvents=1;labelBackgroundColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="200" y="451.39" width="120" height="109.2" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-16" value="&lt;font face=&quot;Tahoma&quot;&gt;&lt;b&gt;Subnet&lt;/b&gt;&lt;/font&gt;" style="outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_subnet;strokeColor=#879196;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#879196;dashed=0;" parent="1" vertex="1">
+          <mxGeometry x="561.25" y="120" width="438.75" height="318" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-15" value="&lt;font&gt;&lt;span&gt;VPC&lt;/span&gt;&lt;/font&gt;" style="outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=1;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc;strokeColor=#879196;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#879196;dashed=0;fontFamily=Tahoma;" parent="1" vertex="1">
+          <mxGeometry x="520" y="80" width="520" height="478" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-3" value="&lt;font face=&quot;Tahoma&quot;&gt;Internet Gateway&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#5A30B5;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.internet_gateway;" parent="1" vertex="1">
+          <mxGeometry x="540" y="475.99" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-5" value="&lt;font face=&quot;Tahoma&quot;&gt;Route Table&lt;/font&gt;" style="outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#5A30B5;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.route_table;" parent="1" vertex="1">
+          <mxGeometry x="756" y="481.83" width="48" height="46.77" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-19" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=classic;startFill=1;fontFamily=Tahoma;fontStyle=1" parent="1" source="xAl2Xru6v9woUS7dk4dZ-29" target="xAl2Xru6v9woUS7dk4dZ-28" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="736.5" y="280" as="sourcePoint" />
+            <mxPoint x="823.5" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-20" value="" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/mscae/Docker.svg;fontFamily=Tahoma;" parent="1" vertex="1">
+          <mxGeometry x="764.97" y="294" width="30.06" height="24.65" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=open;startFill=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#808080;" parent="1" target="xAl2Xru6v9woUS7dk4dZ-5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="600" y="505.49" as="sourcePoint" />
+            <mxPoint x="740" y="505" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=open;startFill=0;endArrow=open;endFill=0;strokeWidth=2;strokeColor=#808080;" parent="1" target="xAl2Xru6v9woUS7dk4dZ-5" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points" />
+            <mxPoint x="780" y="360" as="sourcePoint" />
+            <mxPoint x="781" y="477" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-28" value="&lt;font&gt;router2&lt;/font&gt;" style="shape=mxgraph.cisco.routers.router;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;aspect=fixed;fontFamily=Tahoma;" parent="1" vertex="1">
+          <mxGeometry x="840" y="264" width="44.15" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-29" value="&lt;font&gt;router1&lt;/font&gt;" style="shape=mxgraph.cisco.routers.router;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;aspect=fixed;fontFamily=Tahoma;" parent="1" vertex="1">
+          <mxGeometry x="680" y="264" width="44.15" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="xAl2Xru6v9woUS7dk4dZ-30" value="&lt;font face=&quot;Tahoma&quot;&gt;SSH Key Pair&lt;/font&gt;" style="shape=image;html=1;verticalAlign=top;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;imageAspect=0;aspect=fixed;image=https://cdn2.iconfinder.com/data/icons/whcompare-blue-green-web-hosting-1/453/ssh-128.png" parent="1" vertex="1">
+          <mxGeometry x="236" y="451.39" width="48" height="48" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
