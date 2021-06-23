@@ -1,9 +1,3 @@
----
-# export AWS_ACCESS_KEY=''
-# export AWS_SECRET_KEY=''
-# ansible-galaxy collection install -r collections/requirements.yml
-# ansible-playbook create-EC2-Fedora-34.yml -v
-
 # Play 1: Create an instance on AWS
 - name: Create EC2 instance
   hosts: localhost
@@ -47,7 +41,7 @@
       with_items: "{{ ansible_node_facts.instances }}"
 
 
-# Play 2: Configure instance
+# Play 2: Configure the instance we created
 - name: Configure Instance(s)
   hosts: "my_instances"
   become: true
@@ -69,7 +63,3 @@
       ansible.builtin.debug:
         msg: "{{ hostvars[inventory_hostname]['instance_ssh'] }}"
       when: hostvars[inventory_hostname]['instance_ssh'] is defined
-
-    # - name: Print out SSH access details (you need the SSH Private-Key)
-    #   debug:
-    #     msg: "TO CONNECT: ssh {{ ansible_user }}@{{ ansible_host }}"

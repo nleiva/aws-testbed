@@ -1,10 +1,5 @@
----
-# export AWS_ACCESS_KEY=''
-# export AWS_SECRET_KEY=''
-# ansible-galaxy collection install -r collections/requirements.yml
-# ansible-playbook delete-EC2-Fedora-34.yml -v
-
-# Play 1: Create an instance on AWS
+# Play 1: Delete the instance we created on AWS
+# TODO: We will optionally also delete the other resources created (VPC, Subnet, SG, SSH Key Pair, Internet Gateway)
 - name: Create EC2 instance
   hosts: localhost
   become: false
