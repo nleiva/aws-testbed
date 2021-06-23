@@ -1,0 +1,5 @@
+# Amazon EC2 AMI Locator
+# From: https://cloud-images.ubuntu.com/locator/ec2/
+ec2_ami_id: ami-0b29b6e62f2343b46
+ec2_name_tag: "{{ ec2_resource_prefix }}-ubuntu20.04"
+ec2_username: ec2-user

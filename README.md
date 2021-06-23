@@ -10,10 +10,10 @@ That's where automation comes in.
   <img height="300" title="Software Download section" src="pictures/graph.svg"><br>
 </p>
 
-A [Playbook](create-EC2-Fedora-34.yml) example is included to automatically create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
-The diagram below is a representation of the end-goal of this of this repository.
-All the AWS resources needed are provisioned as part of the process.
-Software requirements install and adding test examples to the VM are also considered. 
+A [Playbook](create-EC2-testbed.yml) example is included in this repository to illustrate how a Testbed environment can be automatically be provision for a particular use-case.
+In this scenario, we create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
+The diagram below is a representation of the end-goal, that shows the AWS resources that need to be present otherwise created. 
+It also hints about Software requirements that will be installed, as well as providing pre-built network topology samples. 
 
 <p align="center">
 <img height="400" src="./pictures/aws.svg">
@@ -63,20 +63,30 @@ ansible-playbook create-EC2-testbed.yml -v
 
 <snip>
 
-TASK [Print out SSH access details] *********************************************************************************************************************************************
-ok: [Fedora34] => {
-    "msg": "ssh -i testbed-private.pem fedora@ec2-3-236-234-XXX.compute-1.amazonaws.com"
+TASK [Print out SSH access details] ***********************************************************************************************************************************************************
+ok: [testbed-fedora34] => {
+    "msg": "ssh -i testbed-private.pem fedora@ec2-54-175-179-XXX.compute-1.amazonaws.com"
 }
 
-RUNNING HANDLER [configure_instance : Reboot machine] ***************************************************************************************************************************
-changed: [Fedora34] => {"changed": true, "elapsed": 23, "rebooted": true}
+RUNNING HANDLER [configure_instance : Reboot machine] *****************************************************************************************************************************************
+changed: [testbed-fedora34] => {"changed": true, "elapsed": 22, "rebooted": true}
 
-PLAY RECAP **********************************************************************************************************************************************************************
-Fedora34                   : ok=33   changed=22   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-localhost                  : ok=23   changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+PLAY RECAP ************************************************************************************************************************************************************************************
+localhost                  : ok=25   changed=7    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
+testbed-fedora34           : ok=33   changed=22   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0    
 ```
 
-You can now access the VM as displayed in the logs, for example: `ssh -i Fedora34-private.pem fedora@ec2-3-236-234-XXXS.compute-1.amazonaws.com`.
+You can now access the VM as displayed in the logs, for example: `ssh -i testbed-private.pem fedora@ec2-54-175-179-XXX.compute-1.amazonaws.com`.
+
+### Linux distribution
+
+You can select either Fedora (34) or Ubuntu (20.04), by passing with variable `aws_distro`. By default it selects `fedora`
+
+You would run the Playbook like this instead, if you preferred to run a `ubuntu` machine. 
+
+```bash
+ansible-playbook create-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
+```
 
 ### Instance type
 
