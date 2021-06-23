@@ -7,7 +7,7 @@ If you want to resume work or start fresh, your setup should ideally be re-creat
 That's where automation comes in.
 
 <p align="center">
-  <img height="300" title="Software Download section" src="pictures/graph.png"><br>
+  <img height="300" title="Software Download section" src="pictures/graph.svg"><br>
 </p>
 
 A [Playbook](create-EC2-Fedora-34.yml) example is included to automatically create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
@@ -16,7 +16,7 @@ All the AWS resources needed are provisioned as part of the process.
 Software requirements install and adding test examples to the VM are also considered. 
 
 <p align="center">
-<img src="./pictures/aws.svg">
+<img height="400" src="./pictures/aws.svg">
 </p>
 
 ## Requirements
