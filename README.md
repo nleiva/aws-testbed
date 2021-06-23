@@ -45,18 +45,18 @@ ansible-galaxy collection install -r collections/requirements.yml
 
 ## Creating the test VM
 
-Let's create a VM to run the examples. 
+Follow this steps to provision the test VM.
 
 1. Clone this repository: `git clone https://github.com/nleiva/aws-testbed.git`
 
-2. Make your [AWS credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available.
+2. Make your [AWS account credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) (`AWS_ACCESS_KEY` and `AWS_SECRET_KEY`) available as environment variables (`export`).
 
 ```bash
 export AWS_ACCESS_KEY='...'
 export AWS_SECRET_KEY='...'
 ```
 
-3. Run the [Playbook](create-EC2-Fedora-34.yml) and wait:
+3. Run the [Playbook](create-EC2-Fedora-34.yml) and wait a couple of minutes while the VM is provisioned and the software is installed:
 
 ```bash
 ansible-playbook create-EC2-Fedora-34.yml -v
@@ -76,11 +76,11 @@ Fedora34                   : ok=33   changed=22   unreachable=0    failed=0    s
 localhost                  : ok=23   changed=2    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0   
 ```
 
-You can access the VM as displayed in the logs, for example: `ssh -i Fedora34-private.pem fedora@ec2-3-236-234-XXXS.compute-1.amazonaws.com`.
+You can now access the VM as displayed in the logs, for example: `ssh -i Fedora34-private.pem fedora@ec2-3-236-234-XXXS.compute-1.amazonaws.com`.
 
 ### Instance type
 
-You can select any instance type you prefer, based on your vCPU/Memory requirements, and price constrains. By default it goes with `t3.medium`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/). Some examples:
+You can select any instance type you prefer, based on your vCPU/Memory requirements, and price constrains. By default it selects `t3.medium`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/) for reference. Some examples:
 
 Instance name | On-Demand hourly rate | vCPU | Memory
 --- | --- | --- | ---
@@ -110,7 +110,7 @@ ansible-playbook create-EC2-Fedora-34.yml -v --extra-vars "instance_type=m5.larg
 
 ## Running a network topology
 
-Once in the VM, you can run any of the examples in the [lab folder](lab). [Containerlab](https://github.com/srl-labs/containerlab) is already installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back is in [lab/frr/](lab/frr/topology.yml), so you change directory (`cd lab/frr/`) and from there you can execute:
+Once in the VM, you can run any of the examples in the [lab folder](lab) in the `$HOME` directory. [Containerlab](https://github.com/srl-labs/containerlab) is installed and does all the magic here. For example, a simple topology with two [FRR](https://frrouting.org/) routers connected back-to-back as described in [lab/frr/](lab/frr/topology.yml) can be run by changing directory (`cd lab/frr/`) and executing from there:
 
 ```bash
 sudo clab deploy --topo topology.yml
@@ -120,15 +120,17 @@ sudo clab deploy --topo topology.yml
   <img height="200" title="Network Topology" src="pictures/topology.png"><br>
 </p>
 
-The routers are [pre-configured](lab/frr/router1/frr.cfg) with BGP running between them. To access router1 for example:
+The routers are [pre-configured](lab/frr/router1/frr.cfg) with a BGP session running between them. To access router1 for example:
 
 ```bash
 docker exec -it clab-mylab-router1 vtysh
 ```
 
+[More details](lab/README.md)
+
 ## Deleting the test VM
 
-To delete the VM, run this:
+As important as creating the VM, is being able to delete it. You can do this by running:
 
 ```bash
 ansible-playbook delete-EC2-Fedora-34.yml -v
