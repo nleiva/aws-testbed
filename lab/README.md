@@ -54,7 +54,7 @@ topology:
 ```
 
 <p align="center">
-  <img height="200" src="../pictures/topology.png"><br>
+  <img height="250" src="../pictures/topology.svg"><br>
 </p>
 
 ### Launching the topology

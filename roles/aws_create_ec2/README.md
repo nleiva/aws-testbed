@@ -30,7 +30,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: localhost
       roles:
-         - { role: go-network-automation.aws_create_ec2 }
+         - { role: aws-testbed.aws_create_ec2 }
 
 License
 -------
