@@ -8,7 +8,11 @@ If you want to resume work or start fresh, your setup should ideally be re-creat
   <img height="300" title="Software Download section" src="pictures/graph.png"><br>
 </p>
 
-In this repo, I will provide an example in AWS to create a virtual machine that can run containerized multi-vendor network topologies automatically. You can modify it to fit your needs.
+In this repo, I will provide an example in AWS to create a virtual machine (VM) that can run containerized multi-vendor network topologies automatically. The diagram below should be a close representation of the end-goal. You can modify the [Playbook](create-EC2-Fedora-34.yml) we use to fit your needs.
+
+<p align="center">
+<img src="./pictures/aws.svg">
+</p>
 
 ## Requirements
 
