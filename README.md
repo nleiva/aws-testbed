@@ -10,7 +10,7 @@ That's where automation comes in.
   <img height="300" title="Software Download section" src="pictures/graph.svg"><br>
 </p>
 
-A [Playbook](create-EC2-testbed.yml) example is included in this repository to illustrate how a Testbed environment can be automatically be provision for a particular use-case.
+A [Playbook](create-EC2-testbed.yml) example is included in this repository to illustrate how a Testbed environment can be automatically be provisioned for a particular use-case.
 In this scenario, we create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
 The diagram below is a representation of the end-goal, that shows the AWS resources that need to be present otherwise created. 
 It also hints about Software requirements that will be installed, as well as providing pre-built network topology samples. 
