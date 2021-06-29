@@ -90,7 +90,7 @@ ansible-playbook create-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
 
 ### Instance type
 
-You can select any instance type you prefer, based on your vCPU/Memory requirements, and price constrains. By default it selects `t3.medium`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/) for reference. Some examples:
+You can select any instance type you prefer, based on your vCPU/Memory requirements, and price constrains. By default it selects `t2.micro`. Check out [On-Demand Plans for Amazon EC2](https://aws.amazon.com/ec2/pricing/on-demand/) for reference. Some examples:
 
 Instance name | On-Demand hourly rate | vCPU | Memory
 --- | --- | --- | ---

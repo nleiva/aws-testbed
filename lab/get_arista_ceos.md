@@ -30,7 +30,7 @@ From there, you can download cEOS.
 Upload container image from your computer to EC2 instance.
 
 ```bash
-scp -i Fedora34-private.pem ~/Downloads/cEOS-lab-4.25.4M.tar fedora@ec2-44-192-86-27.compute-1.amazonaws.com:/home/fedora
+scp -i testbed-private.pem ~/Downloads/cEOS-lab-4.25.4M.tar fedora@ec2-44-192-86-27.compute-1.amazonaws.com:/home/fedora
 ```
 
 Import the image to Docker
