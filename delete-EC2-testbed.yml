@@ -1,6 +1,6 @@
 # Play 1: Delete the instance we created on AWS
 # TODO: We will optionally also delete the other resources created (VPC, Subnet, SG, SSH Key Pair, Internet Gateway)
-- name: Create EC2 instance
+- name: Delete EC2 instance
   hosts: localhost
   become: false
   gather_facts: true

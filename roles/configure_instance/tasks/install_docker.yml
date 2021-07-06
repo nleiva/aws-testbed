@@ -7,7 +7,7 @@
 
     - name: Add Docker repository
       ansible.builtin.get_url:
-        url: https://download.docker.com/linux/fedora/docker-ce.repo
+        url: "{{ docker_repo_url }}/{{ ansible_distribution | lower }}/docker-ce.repo"
         dest: '/etc/yum.repos.d/docker-ce.repo'
         owner: root
         group: root

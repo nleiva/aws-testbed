@@ -1,0 +1,22 @@
+- name: Gather information about all Security Groups in Environment {{ ec2_environment }}
+  amazon.aws.ec2_group_info:
+    region: "{{ ec2_region }}"
+    filters:
+      vpc-id: "{{ item.vpc_id }}"
+  loop: '{{ all_vpcs.vpcs }}'
+  register: all_sg
+
+# - name: Debug list all SG for VPC
+#   debug:
+#     msg: "{{ all_sg.results | to_nice_json }}"
+
+# Traverse nested key from a list of dictionaries
+- name: Delete Security Group by its ID
+  amazon.aws.ec2_group:
+    region: "{{ ec2_region }}"
+    group_id: "{{ item.1.group_id }}"
+    state: absent
+  with_subelements:
+    - "{{ all_sg.results }}"
+    - security_groups
+  when: item.1.group_name != "default"

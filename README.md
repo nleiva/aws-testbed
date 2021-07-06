@@ -6,10 +6,6 @@ If you only run tests or work on demos for a couple of hours per day, it makes a
 If you want to resume work or start fresh, your setup should ideally be re-created consistently and then destroyed with a single click of a button. 
 That's where automation comes in.
 
-<p align="center">
-  <img height="300" title="Software Download section" src="pictures/graph.svg"><br>
-</p>
-
 A [Playbook](create-EC2-testbed.yml) example is included in this repository to illustrate how a Testbed environment can be automatically be provisioned for a particular use-case.
 In this scenario, we create a virtual machine (VM) in AWS that is ready to run containerized multi-vendor network topologies. 
 The diagram below is a representation of the end-goal, that shows the AWS resources that need to be present otherwise created. 
@@ -151,4 +147,12 @@ For a specific Linux distribution:
 
 ```bash
 ansible-playbook delete-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
+```
+
+## Deleting all AWS resources created
+
+This is optional. You can remove VPC, Subnet, Security Group, SSH Key Pair, and Internet Gateway.
+
+```bash
+ansible-playbook delete-AWS-resources.yml -v
 ```
