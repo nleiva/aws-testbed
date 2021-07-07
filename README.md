@@ -156,3 +156,9 @@ This is optional. You can remove VPC, Subnet, Security Group, SSH Key Pair, and 
 ```bash
 ansible-playbook delete-AWS-resources.yml -v
 ```
+
+If you used a non-default prefix, then:
+
+```bash
+ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another"
+```

@@ -1,5 +1,5 @@
 # Play 1: Delete the instance we created on AWS
-# TODO: We will optionally also delete the other resources created (VPC, Subnet, SG, SSH Key Pair, Internet Gateway)
+# Another Playbook deletes the other resources created (VPC, Subnet, SG, SSH Key Pair, Internet Gateway)
 - name: Delete EC2 instance
   hosts: localhost
   become: false
@@ -15,28 +15,12 @@
     - name: Include Linux distribution variables
       include_vars: "./vars/aws_{{ ec2_distro }}.yml"
 
-    - name: Stop instances
-      amazon.aws.ec2:
-        region: "{{ ec2_region }}"
-        instance_tags:
-            Name: "{{ ec2_name_tag }}"
-        state: stopped
-      register: stopped_instances
-
-    - name: Print out instances to be deleted
-      ansible.builtin.debug:
-        msg: "Instances to be deleted: {{ stopped_instances.instance_ids | join(', ') }}"
-
-    - name: Sleep for 60 seconds and continue with play
-      wait_for:
-        timeout: 60
-      delegate_to: localhost
-
-    # ^ Need to wait a bit before destroying them
-    - name: Destroy instances
-      ec2:
+    - name: Delete EC2 instance
+      community.aws.ec2_instance:
         region: "{{ ec2_region }}"
         state: absent
-        instance_ids: "{{ stopped_instances.instance_ids | list }}"
-        wait: true
-      register: result_ec2_destroy
+        filters:
+          instance-state-name: running
+          "tag:Name": "{{ ec2_name_tag }}"
+          "tag:Environment": "{{ ec2_environment }}"
+      #register: ec2
