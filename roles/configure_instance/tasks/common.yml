@@ -1,5 +1,5 @@
 - name: Setup hostname
-  hostname:
+  ansible.builtin.hostname:
     name: "{{ hostvars[inventory_hostname]['instance_name'] }}"
   when: hostvars[inventory_hostname]['instance_name'] is defined
 
@@ -9,7 +9,7 @@
   when: ansible_distribution == 'Ubuntu'
 
 - name: Install base packages
-  package:
+  ansible.builtin.package:
     name: "{{ base_software[ansible_distribution_file_variety] | union(common_software) }}"
     state: present
   register: package_check
@@ -18,7 +18,7 @@
   delay: 5
 
 - name: Install Python dependencies
-  pip:
+  ansible.builtin.pip:
     name: "{{ python_libraries }}"
     executable: pip3
 
