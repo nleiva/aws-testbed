@@ -11,16 +11,6 @@
     remote_src: yes
     mode: '0755'
 
-# To store config template files
-# https://github.com/srl-labs/containerlab/issues/466
-- name: Make sure /etc/containerlab directory exists
-  ansible.builtin.file:
-    path: "/etc/containerlab"
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    state: directory
-    mode: '0755'
-
 - name: Copy Containerlab binary
   ansible.builtin.copy:
     src: "/tmp/containerlab"
@@ -37,12 +27,3 @@
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
     state: link
-
-- name: Copy Containerlab templates
-  ansible.builtin.copy:
-    src: "/tmp/templates"
-    dest: "/etc/containerlab"
-    remote_src: yes
-    owner: "{{ ansible_user }}"
-    group: "{{ ansible_user }}"
-    mode: '0755'

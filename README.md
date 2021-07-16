@@ -92,12 +92,24 @@ Instance name | On-Demand hourly rate | vCPU | Memory
 --- | --- | --- | ---
 t3.medium | $0.0416 | 2 | 4 GiB
 m5.large | $0.096 | 2 | 8 GiB
+t3.xlarge | $0.1664 | 4 | 16 GiB
+m4.xlarge | $0.2 | 4 | 16 GiB
+r5.xlarge | $0.252 | 4 | 32 GiB
+m5.2xlarge | $0.384 | 8 | 32 GiB
+r5.2xlarge | $0.504 | 8 | 64 GiB
+c5.metal | $4.08 | 96 | 192 GiB
 
 You would run the [Playbook](create-EC2-testbed.yml) as follows, if you preferred to run a `m5.large` instance. 
 
 ```bash
 ansible-playbook create-EC2-testbed.yml -v --extra-vars "instance_type=m5.large"
 ```
+
+To run the Containerlab's Firecracker micro-VMs [mode of operation](https://containerlab.srlinux.dev/manual/kinds/cvx/#mode-of-operation), you need nested virtualization support, which regular AWS instances don't provide ([Cloud Provider Instances with KVM support](https://ignite.readthedocs.io/en/stable/cloudprovider/)), so you would need to select a [bare metal instance type](https://aws.amazon.com/about-aws/whats-new/2018/05/announcing-general-availability-of-amazon-ec2-bare-metal-instances/). 
+
+Note1: `a1.metal` is the cheapest bare metal instance. However, its architecture is `arm64`, not `x86_64` (it affect the image type you select).
+
+Note2: Rebooting a [bare metal instance](https://aws.amazon.com/about-aws/whats-new/2018/05/announcing-general-availability-of-amazon-ec2-bare-metal-instances/) takes considerably longer than a regular EC2 instance.
 
 ### Volume type
 
