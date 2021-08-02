@@ -7,7 +7,7 @@
     - ./vars/aws_common.yml
 
   roles:
-      - { role: check_vars }
+      - { role: check_vars, when: not skip_check }
       - { role: install_dependencies }
 
   tasks:
