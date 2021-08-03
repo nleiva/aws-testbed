@@ -28,7 +28,7 @@ python -m pip install --user ansible
 As we will interact with AWS, we need a couple of Python libraries to be present in the system.
 
 ```bash
-pip3 install --user boto3 botocore
+pip install --user -r requirements.txt
 ```
 
 ### Ansible Collections
