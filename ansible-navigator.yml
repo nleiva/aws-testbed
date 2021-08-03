@@ -1,0 +1,9 @@
+---
+ansible-navigator:
+  ansible:
+    config: ansible.cfg
+  editor:
+    command: code -g {filename}:{line_number}
+    console: false
+  logging:
+    level: critical

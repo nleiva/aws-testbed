@@ -1,4 +1,5 @@
 
+skip_check: false
 ec2_distro: "{{ aws_distro | default('fedora') }}"
 supported_distros: ['fedora', 'ubuntu']
 ec2_resource_prefix: "{{ aws_prefix | default('testbed') }}"

@@ -174,3 +174,11 @@ If you used a non-default prefix, then:
 ```bash
 ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another"
 ```
+
+## Ansible Navigator
+
+You can alternatively run it with Ansible Navigator:
+
+```bash
+ansible-navigator run create-EC2-testbed.yml --ee false --penv AWS_ACCESS_KEY,AWS_SECRET_KEY
+```
