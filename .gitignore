@@ -1,5 +1,7 @@
 *.pem
 *.json
+*.temp
 .vscode
+context
 *artifact*
 *.log

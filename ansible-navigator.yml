@@ -2,8 +2,25 @@
 ansible-navigator:
   ansible:
     config: ansible.cfg
+    inventories:
+    - ./hosts
+
   editor:
     command: code -g {filename}:{line_number}
     console: false
+
   logging:
     level: critical
+
+  execution-environment:
+    container-engine: podman
+    enabled: False
+    environment-variables:
+      pass:
+        - AWS_ACCESS_KEY
+        - AWS_SECRET_KEY
+    image: quay.io/nleiva/aws_ee_image
+    #pull-policy: never
+
+  playbook-artifact:
+    enable: False

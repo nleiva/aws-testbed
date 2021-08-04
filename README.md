@@ -175,10 +175,28 @@ If you used a non-default prefix, then:
 ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another"
 ```
 
-## Ansible Navigator
+## Alternative Ansible execution (optional)
+
+### Ansible Navigator
 
 You can alternatively run it with Ansible Navigator:
 
 ```bash
 ansible-navigator run create-EC2-testbed.yml --ee false --penv AWS_ACCESS_KEY,AWS_SECRET_KEY
+```
+
+### Run in Playbook in an Execution Environment
+
+#### Create Execution Environment image with Ansible builder
+
+Image details in [execution-environment.yml](execution-environment.yml). This is optional, you can pull the image from [quay.io/nleiva/aws_ee_image](https://quay.io/repository/nleiva/aws_ee_image). 
+
+```bash
+ansible-builder build -t aws_ee_image
+```
+
+#### Run Execution Environment
+
+```bash
+ansible-navigator run create-EC2-testbed.yml --extra-vars "instance_type=t3.medium"
 ```

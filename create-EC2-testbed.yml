@@ -33,8 +33,9 @@
     - name: Add instance(s) to my_instances group
       ansible.builtin.add_host:
         name: "{{ item.tags.Name }}"
-        ansible_host: "{{ item.public_ip_address }}"
+        ansible_host: "{{ item.public_dns_name }}"
         ansible_user: "{{ ec2_username }}"
+        public_ip: "{{ item.public_ip_address }}"
         private_ip: "{{ item.private_ip_address }}"
         instance_name: "{{ ec2_resource_prefix }}"
         ansible_ssh_private_key_file: "{{ playbook_dir }}/{{ ec2_resource_prefix }}-private.pem"
@@ -47,21 +48,20 @@
 # Play 2: Configure the instance we created
 - name: Configure Instance(s)
   hosts: "my_instances"
-  become: true
   gather_facts: true
   vars_files:
     - ./vars/go_inputs.yml
     - ./vars/clab_inputs.yml
 
-  tasks:
+  pre_tasks:
     - name: Display variables/facts known for instance
       debug:
         msg: "Running {{ ansible_distribution }} {{ ansible_distribution_version }} ({{ ansible_os_family }}), IP address: {{ ansible_host }}"
 
-    - name: Install packages and config files
-      include_role:
-        name: configure_instance
+  roles:
+      - { role: configure_instance, become: true }
 
+  tasks:
     - name: Print out SSH access details
       ansible.builtin.debug:
         msg: "{{ hostvars[inventory_hostname]['instance_ssh'] }}"
