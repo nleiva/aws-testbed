@@ -15,6 +15,8 @@ It also hints about Software requirements that will be installed, as well as pro
 <img height="400" src="./pictures/aws.svg">
 </p>
 
+More details -> [How to consistently run temporary workloads on AWS and save money](https://nleiva.medium.com/how-you-can-consistently-run-temporary-workloads-in-the-cloud-37140b4b5e55)
+
 ## Requirements
 
 Ansible 2.9+ needs to be [installed](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible-with-pip) in your computer to run this example. [Python3](https://wiki.python.org/moin/BeginnersGuide/Download) as well.
