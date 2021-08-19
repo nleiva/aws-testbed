@@ -1,5 +1,5 @@
 # Go specific
-go_version: 1.16.5
+go_version: 1.17
 HOME: "/home/{{ user }}"
 GOPATH: "{{ HOME }}/go"
 GOROOT: /usr/local/go
