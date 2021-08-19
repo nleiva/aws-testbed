@@ -16,7 +16,7 @@ pip3 install boto3 botocore
 Role Variables
 --------------
 
-We need to export `AWS_ACCESS_KEY` and `AWS_SECRET_KEY` before executing.
+We need to export `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` before executing.
 
 Dependencies
 ------------

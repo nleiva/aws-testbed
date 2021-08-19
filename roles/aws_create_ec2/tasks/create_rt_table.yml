@@ -9,7 +9,6 @@
         gateway_id: "{{ igw.gateway_id }}"
     tags:
       Environment: "{{ ec2_environment }}"
-      DeleteBy: "{{ ec2_delete_by_tag }}"
       Name: "{{ ec2_resource_prefix }}-route-table"
   register: rt_table
   until: rt_table is not failed

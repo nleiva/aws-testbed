@@ -6,7 +6,6 @@
     vpc_id: "{{ create_vpc.vpc.id }}"
     tags:
       Environment: "{{ ec2_environment }}"
-      DeleteBy: "{{ ec2_delete_by_tag }}"
       Name: "{{ ec2_resource_prefix }}-SG"
     rules:
       - proto: tcp

@@ -6,7 +6,6 @@
     region: "{{ ec2_region }}"
     tags:
       Environment: "{{ ec2_environment }}"
-      DeleteBy: "{{ ec2_delete_by_tag }}"
   register: create_vpc
   until: create_vpc is not failed
   retries: 5

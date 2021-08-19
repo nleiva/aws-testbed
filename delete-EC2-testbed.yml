@@ -9,7 +9,7 @@
 
   roles:
       - { role: check_vars }
-      - { role: install_dependencies }
+      - { role: install_dependencies, when: dependencies_check }
 
   tasks:
     - name: Include Linux distribution variables
@@ -23,4 +23,3 @@
           instance-state-name: running
           "tag:Name": "{{ ec2_name_tag }}"
           "tag:Environment": "{{ ec2_environment }}"
-      #register: ec2

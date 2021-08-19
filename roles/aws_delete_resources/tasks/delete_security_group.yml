@@ -2,21 +2,13 @@
   amazon.aws.ec2_group_info:
     region: "{{ ec2_region }}"
     filters:
-      vpc-id: "{{ item.vpc_id }}"
-  loop: '{{ all_vpcs.vpcs }}'
+      vpc-id: "{{ all_vpcs.vpcs[0].vpc_id }}"
   register: all_sg
 
-# - name: Debug list all SG for VPC
-#   debug:
-#     msg: "{{ all_sg.results | to_nice_json }}"
-
-# Traverse nested key from a list of dictionaries
-- name: Delete Security Group by its ID
+- name: Delete Security Groups in VPC {{ all_vpcs.vpcs[0].vpc_id }} by ID
   amazon.aws.ec2_group:
     region: "{{ ec2_region }}"
-    group_id: "{{ item.1.group_id }}"
+    group_id: "{{ item.group_id }}"
     state: absent
-  with_subelements:
-    - "{{ all_sg.results }}"
-    - security_groups
-  when: item.1.group_name != "default"
+  loop: "{{ all_sg.security_groups }}"
+  when: item.group_name != "default"

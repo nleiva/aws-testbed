@@ -1,17 +1,6 @@
-- name: Find all subnets associated with VPC in Environment {{ ec2_environment }}
-  amazon.aws.ec2_vpc_subnet_info:
-    region: "{{ ec2_region }}"
-    filters:
-      vpc-id: "{{ item.vpc_id }}"
-  loop: '{{ all_vpcs.vpcs }}'
-  register: all_subnets
-
-- name: Delete subnets
+- name: Delete Subnet
   amazon.aws.ec2_vpc_subnet:
     region: "{{ ec2_region }}"
-    vpc_id: "{{ item.1.vpc_id }}"
-    cidr: "{{ item.1.cidr_block }}"
+    vpc_id: "{{ all_vpcs.vpcs[0].vpc_id }}"
+    cidr: "{{ ec2_subnet }}"
     state: absent
-  with_subelements:
-    - "{{ all_subnets.results }}"
-    - subnets

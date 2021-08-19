@@ -1,23 +1,10 @@
-- name: Grab route table information in Environment {{ ec2_environment }}
-  community.aws.ec2_vpc_route_table_info:
-    region: "{{ ec2_region }}"
-    filters:
-      vpc-id: "{{ item.vpc_id }}"
-  loop: '{{ all_vpcs.vpcs }}'
-  register: all_route_table
-
-- name: Debug route table
-  debug:
-    msg: "{{ all_route_table | to_nice_yaml }}"
-
-- name: vpc public subnet route table is deleted
+# Tags are used to uniquely identify route tables within a VPC 
+# when the route_table_id is not supplied.
+- name: Delete Route Table
   community.aws.ec2_vpc_route_table:
     region: "{{ ec2_region }}"
-    route_table_id: "{{ item.1.id }}"
-    lookup: id
-    vpc_id: "{{ item.1.vpc_id }}"
+    vpc_id: "{{ all_vpcs.vpcs[0].vpc_id }}"
+    tags:
+      Environment: "{{ ec2_environment }}"
+      Name: "{{ ec2_resource_prefix }}-route-table"
     state: absent
-  with_subelements:
-    - "{{ all_route_table.results }}"
-    - route_tables
-  when: item.1.associations | length == 0 or not item.1.associations[0].main

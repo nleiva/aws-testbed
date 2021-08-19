@@ -8,7 +8,7 @@
 
   roles:
       - { role: check_vars, when: not skip_check }
-      - { role: install_dependencies }
+      - { role: install_dependencies, when: dependencies_check }
 
   tasks:
     - name: Include Linux distribution variables
