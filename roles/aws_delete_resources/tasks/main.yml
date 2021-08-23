@@ -5,21 +5,17 @@
       "tag:Environment": "{{ ec2_environment }}"
   register: all_vpcs
 
-# - name: Debug VPC
-#   debug:
-#     msg: "{{ all_vpcs | to_nice_yaml }}"
-
-- name: Delete Security Group
-  include_tasks: delete_security_group.yml
-
-- name: Delete Subnet
-  include_tasks: delete_subnet.yml
+- name: Delete Route Table
+  include_tasks: delete_rt_table.yml
 
 - name: Delete Internet Gateway
   include_tasks: delete_igw.yml
 
-- name: Delete Route Table
-  include_tasks: delete_rt_table.yml
+- name: Delete Subnet
+  include_tasks: delete_subnet.yml
+
+- name: Delete Security Group
+  include_tasks: delete_security_group.yml
 
 - name: Delete VPC
   include_tasks: delete_vpc.yml

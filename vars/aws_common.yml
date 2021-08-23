@@ -7,6 +7,7 @@ ec2_instance_type: "{{ instance_type | default('t2.micro') }}"
 ec2_environment: "{{ ec2_resource_prefix }}"
 s3_identifier: "{{ aws_s3 | default('somethingRandom') }}"
 dependencies_check: true
+delete: false
 ec2_volume:
   - device_name: /dev/sda1
     ebs:

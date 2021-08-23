@@ -163,18 +163,18 @@ For a specific Linux distribution:
 ansible-playbook delete-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu"
 ```
 
-## Deleting all AWS resources created
+## Deleting all remaining AWS resources
 
-This is optional. You can remove VPC, Subnet, Security Group, SSH Key Pair, and Internet Gateway.
+This is optional. You can remove VPC, Subnet, Security Group, SSH Key Pair, and Internet Gateway, by setting the variable `delete` to `true` in the previous Playbook. For example:
 
 ```bash
-ansible-playbook delete-AWS-resources.yml -v
+ansible-playbook delete-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu delete=true"
 ```
 
 If you used a non-default prefix, then:
 
 ```bash
-ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another"
+ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another delete=true"
 ```
 
 ## Alternative Ansible execution (optional)
