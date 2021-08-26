@@ -1,5 +1,7 @@
 # Automating a testing environment setup on AWS
 
+[![Ansible Lint](https://github.com/nleiva/aws-testbed/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/nleiva/aws-testbed/actions/workflows/ansible-lint.yml)
+
 Cloud resources are expensive, you only want to pay for them while your are using them. 
 If you only run tests or work on demos for a couple of hours per day, it makes a sense to shutdown all resources for the rest of the day to save on costs.
 
