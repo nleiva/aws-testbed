@@ -28,4 +28,4 @@
     - name: Delete all AWS remaining resources
       ansible.builtin.include_role:
         name: aws_delete_resources
-      when: "{{ delete | bool }}"
+      when: delete | bool
