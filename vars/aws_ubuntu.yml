@@ -14,5 +14,5 @@ ubuntu_ami:
   ap_northeast_1: ami-0827d8ed0295e3feb
 
 ec2_ami_id: "{{ ubuntu_ami[ec2_region | replace('-','_')] }}"
-ec2_name_tag: "{{ ec2_resource_prefix }}-ubuntu20.04"
+ec2_name_tag: "{{ ec2_resource_prefix }}"
 ec2_username: ubuntu

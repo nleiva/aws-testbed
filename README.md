@@ -176,7 +176,7 @@ ansible-playbook delete-EC2-testbed.yml -v --extra-vars "aws_distro=ubuntu delet
 If you used a non-default prefix, then:
 
 ```bash
-ansible-playbook delete-AWS-resources.yml -v -e "aws_prefix=another delete=true"
+ansible-playbook delete-EC2-testbed.yml -v -e "aws_prefix=another delete=true"
 ```
 
 ## Alternative Ansible execution (optional)

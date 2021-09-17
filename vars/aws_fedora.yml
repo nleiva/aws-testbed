@@ -1,5 +1,5 @@
 # Fedora 34 x86_64 Cloud Base AMIs 
 # From: https://alt.fedoraproject.org/cloud/
 ec2_ami_id: ami-09e08e82e8f927ba4
-ec2_name_tag: "{{ ec2_resource_prefix }}-fedora34"
+ec2_name_tag: "{{ ec2_resource_prefix }}"
 ec2_username: fedora

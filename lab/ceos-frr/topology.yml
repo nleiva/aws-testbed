@@ -10,7 +10,7 @@ topology:
         - router1/frr.cfg:/etc/frr/frr.conf
     router2:
       kind: ceos
-      image: ceos:4.25.4M
+      image: ceos:4.26.1F
 
   links:
     - endpoints: ["router1:eth1", "router2:eth1"]
